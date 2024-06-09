@@ -1,0 +1,223 @@
+
+body{
+    background-color: black;
+}
+
+
+header {
+  background-color: rgba(50, 111, 109, 0.763);
+  height: 100px;
+}
+
+.title {
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.links {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  color: black;
+}
+
+/* end of header css*/
+
+.newUser {
+  margin-top: 50px;
+}
+
+.signUP {
+  background-color: whitesmoke;
+  height: 300px;
+  border: 3px solid black;
+}
+
+.signUpField {
+  border-radius: 20px;
+  margin-left: 10px;
+  text-align: center;
+}
+
+.signUpLabel {
+  margin-top: 10px;
+  margin-left: 5px;
+  font-weight: bold;
+}
+
+.buttonArea {
+  height: 75px;
+}
+
+.formButtons {
+  height: 50px;
+  background-color: rgba(50, 111, 109, 0.763);
+  font-weight: bold;
+  margin: 0;
+}
+
+.btn1 {
+  margin-left: 5px;
+}
+
+.btn2 {
+  margin-right: 5px;
+}
+
+.passWordArea {
+  position: relative;
+}
+
+.eyeIcon {
+  position: absolute;
+  right: 70px;
+  top: 52px;
+  cursor: pointer;
+}
+
+.password {
+  margin-bottom: 15px;
+}
+/* end of log in css */
+
+
+.addPost{
+    margin-top: 50px;
+   
+}
+
+.posts{
+    margin-top: 50px;
+
+}
+
+.postCards{
+    text-align: center;
+    margin-top: 20px;
+    background-color: rgba(50, 111, 109, 0.763);
+    color: black;
+}
+
+.cardLink{
+    color: black;
+    text-decoration: none;
+}
+
+.postButton{
+    background-color: rgba(50, 111, 109, 0.763);
+    font-weight: bolder;
+    color: black;
+}
+
+/* end of main page css*/
+
+.commentForm{
+    margin-top: 25px;
+    border: 4px solid black;
+    background-color: whitesmoke;
+   
+}
+
+.commmentText{
+    margin-top: 25px;
+    height: 250px;
+    border: 2px solid black;
+    
+}
+
+
+.commentButton {
+    font-weight: bolder;
+    margin:0 auto;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    background-color: rgba(50, 111, 109, 0.763);
+    color: black;
+
+}
+
+.commentLabel {
+    margin-top: 25px;
+    font-weight: bolder;
+    font-size: larger;
+}
+
+
+.commmentText:focus {
+    outline: none;
+    border-color: black; 
+}
+/* end of comment page css*/
+
+.postTitle{
+    margin-top: 15px;
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.postTitletext{
+    margin-top: 15px;
+    border-color: black;
+}
+
+.postTitletext:focus {
+    outline: none;
+    border-color: black; 
+}
+
+
+
+
+@media (min-width: 576px) {
+  .media1 {
+    flex-direction: row !important;
+    align-items: end;
+    justify-content: space-between;
+  }
+
+  .title {
+    margin-top: 70px;
+  }
+
+  nav {
+    margin-top: 70px;
+  }
+}
+
+@media (min-width: 530px) {
+  .eyeIcon {
+    right: 90px;
+  }
+}
+
+@media (min-width: 576px) {
+  .eyeIcon {
+    right: 55px;
+  }
+}
+
+@media (min-width: 768px) {
+  .eyeIcon {
+    right: 90px;
+  }
+}
+
+@media (min-width: 910px) {
+  .eyeIcon {
+    right: 100px;
+  }
+}
+
+@media (min-width: 992px) {
+  .eyeIcon {
+    right: 70px;
+  }
+}
+
+@media (min-width: 576px) {
+    .postCards {
+      margin: 0 auto ;
+      margin-top: 15px;
+    }
+  }
