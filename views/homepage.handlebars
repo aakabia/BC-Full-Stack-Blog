@@ -9,32 +9,35 @@
 
 <section class="posts container-fluid">
     <div class="row d-flex justify-content-center">
-        <div class="postCards col-11 col-sm-5 d-flex justify-content-center card">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
 
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card's content.
-                </p>
-                <h6> Created by: Aziz Kabia  </h6>
-                <a href="/api/users/comment" class="cardLink card-link">Comment</a>
-                <a href="/api/users/viewone" class="cardLink card-link">View Topic</a>
-            </div>
-        </div>
+
+
+
+
+
+         {{#each newBlogData as | blogData|}}
 
         <div class="postCards col-11 col-sm-5 d-flex justify-content-center card">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">{{blogData.topic}}</h5>
 
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card's content.
+                <p class="card-text cardT">
+                   {{blogData.description}}
                 </p>
-                <h6> Created by: Aziz Kabia  </h6>
+                <h6> Created by: {{blogData.user.user_name }} </h6>
                 <a href="/api/users/comment" class="cardLink card-link">Comment</a>
-                <a href="/api/users/viewone" class="cardLink card-link">View Topic</a>
+                <a href="/api/blogs/viewone" class="cardLink card-link">View </a>
             </div>
         </div>
+
+        {{/each}}
+
+
+
+
+
+
+
+       
     </div>
 </section>

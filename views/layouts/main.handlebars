@@ -1,5 +1,5 @@
-<!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -37,20 +37,21 @@
           <nav class="col-12 col-sm-5 d-flex flex-row justify-content-between">
             <a class="links" href="/">Home</a>
             <a class="links" href="/api/users/dash">Dashbord</a>
-            <a class="links" href="/api/users/login">Login</a>
+
+            {{#if loggedIn}}
+              <a class="links" href="/">Logout</a>
+            {{else}}
+              <a class="links" href="/login">Login</a>
+            {{/if}}
+
           </nav>
         </div>
       </header>
     </section>
     <!-- end of header -->
 
-
-
-    {{{ body }}}
+    {{{body}}}
     <!-- Above is what we use for our handle bar templetes placement.-->
-
-
-
 
     <script
       src="https://code.jquery.com/jquery-3.7.1.min.js"
@@ -64,8 +65,6 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="/js/main.js"></script>
-    <script src="/js/login.js"></script>
-    <script src="/js/post.js"></script>
   </body>
+
 </html>

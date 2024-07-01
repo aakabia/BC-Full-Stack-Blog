@@ -1,51 +1,36 @@
 
+<section class="addPost container-fluid">
+    <div class="row d-flex justify-content-center">
+        <button type="button" class="postButton col-11 col-sm-4 col-lg-3 btn btn-secondary">
+            + Add Post
+        </button>
+    </div>
+</section>
+
+
+
+
 <section class="posts container-fluid">
     <div class="row d-flex justify-content-center">
+
+
+        {{#each newuserData.blogs as | blog |}}
         <div class="postCards col-11 col-sm-5 d-flex justify-content-center card">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">{{blog.topic}}</h5>
 
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card's content.
+                <p class="card-text cardT">
+                    {{blog.description}}
                 </p>
 
-                <h6> Created by: Aziz Kabia  </h6>
-                <a href="/api/users/viewone" class="cardLink card-link">View Topic</a>
-                <a href="/api/users/update" class="cardLink card-link">Update Topic </a>
+                <h6> Created by: {{blog.user.user_name}}  </h6>
+                <a href="/api/blogs/viewone" class="cardLink card-link">View </a>
+                <a href="/api/users/update" class="cardLink card-link">Update  </a>
+                <a href="/" class="cardLink card-link">Delete </a>
                 
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-        <div class="postCards col-11 col-sm-5 d-flex justify-content-center card">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card's content.
-                </p>
-
-                <h6> Created by: Aziz Kabia  </h6>
-                <a href="/api/users/viewone" class="cardLink card-link">View Topic</a>
-                <a href="/api/users/update" class="cardLink card-link">Update Topic </a>
-                
-            </div>
-        </div>
-
-       
-
-
-
-
+        {{/each}}
 
 
        

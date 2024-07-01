@@ -167,6 +167,25 @@ header {
 }
 
 
+.alert{
+  color: red
+}
+
+.cardT {
+  /* Limit text to 3 lines and add ellipsis for overflow */
+  display: -webkit-box;
+  -webkit-line-clamp: 7; /* Number of lines to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+
+
+
+
+
 
 
 @media (min-width: 576px) {
