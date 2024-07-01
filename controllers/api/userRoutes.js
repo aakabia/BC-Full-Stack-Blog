@@ -43,14 +43,7 @@ router.get("/dash", withAuth, async (req, res) => {
 
 
 
-router.get("/comment", async (req, res) => {
-  // Above is a get route used to render the log in page.
-  try {
-    res.render("comment", {});
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+
 
 
 
