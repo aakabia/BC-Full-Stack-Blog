@@ -1,12 +1,18 @@
 const router = require("express").Router();
 const { User, Blog, Comment } = require("../models");
-const withAuth = require('../utils/auth');
+const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
   // Above, is a get route used to render a page.
   try {
     let blogData = await Blog.findAll({
-      include: [{ model: User, attributes: { exclude: ["password"] } }],
+      include: [
+        { model: User, attributes: { exclude: ["password"] } },
+        {
+          model: Comment,
+          include: [{ model: User, attributes: { exclude: ["password"] } }],
+        },
+      ],
     });
     // Above we get all blog data and get the associated user who created the blog.
     if (!blogData) {
@@ -15,8 +21,9 @@ router.get("/", async (req, res) => {
     }
     // Above, checks if any blog data exists.
     const newBlogData = blogData.map((blog) => blog.get({ plain: true }));
+
     // Above, we map all the blog data and return a plain version in order to use for handlebars.
-    const loggedIn = req.session.loggedIn
+    const loggedIn = req.session.loggedIn;
     res.status(200).render("homepage", {
       newBlogData,
       loggedIn,
@@ -28,9 +35,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Above is a route to display our home page. 
-
-
+// Above is a route to display our home page.
 
 router.get("/signup", async (req, res) => {
   try {
@@ -42,7 +47,6 @@ router.get("/signup", async (req, res) => {
 
 // Above, is a route to render our signup page.
 
-
 router.get("/login", async (req, res) => {
   try {
     res.status(200).render("login");
@@ -50,9 +54,6 @@ router.get("/login", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-
-
 
 // Above is a route to render our log in page.
 module.exports = router;

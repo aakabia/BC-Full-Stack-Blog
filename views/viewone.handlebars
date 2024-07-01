@@ -3,14 +3,13 @@
     <div class="row d-flex justify-content-center">
         <div class="postCards col-11 col-sm-11 d-flex justify-content-center card">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">{{newblogData.topic}}</h5>
 
                 <p class="card-text">
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card's content.
+                   {{newblogData.description}}
                 </p>
 
-                <h6> Created by: Aziz Kabia  </h6>
+                <h6> Created by: {{newblogData.user.user_name}}  </h6>
                 <a href="/api/users/comment" class="cardLink card-link">Comment</a>
                 
             </div>
@@ -18,32 +17,25 @@
 
 
 
-
+        {{#each newblogData.comments as | comment|}}
         <div class="postCards col-11 col-sm-5 d-flex justify-content-center card">
             <div class="card-body">
-                <h5 class="card-title"> Comment by: John Stafford </h5>
+                <h5 class="card-title"> Comment by: {{comment.user.user_name}} </h5>
 
                 <p class="card-text">
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card's content.
+                   {{comment.comment}}
                 </p>
+
+                <a href="/" class="cardLink card-link">Delete</a>
 
                 
             </div>
         </div>
+        {{/each}}
 
-        <div class="postCards col-11 col-sm-5 d-flex justify-content-center card">
-            <div class="card-body">
-                <h5 class="card-title"> Comment by: Solo Hedd </h5>
 
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card's content.
-                </p>
 
-                
-            </div>
-        </div>
+       
 
 
 
