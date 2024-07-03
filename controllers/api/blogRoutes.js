@@ -36,4 +36,39 @@ router.get("/:id", withAuth, async (req, res) => {
   }
 });
 
+router.get("/", withAuth, async (req, res) => {
+  try {
+    res.status(200).render("post", {});
+  } catch (err) {
+    res.status(500).json(err);
+  }
+  // Above is our route to get to the post page for a blog
+});
+
+router.post("/create", withAuth, async (req, res) => {
+  try {
+    if (!req.body) {
+      res
+        .status(400)
+        .json({ message: "No data to create blog!" });
+      return;
+    }
+
+    // Above we check if the req. body exists.
+
+    const user_id = req.session.userId;
+    const topic = req.body.topic;
+    const description = req.body.description;
+    // Above, we get our expected values from the req body 
+    const newBlog = await Blog.create({ topic, description, user_id });
+    //Above, we create a new blog with the items from the body 
+
+    res.status(200).json({ blog: newBlog, message: "New Blog Created!" });
+    // Above is our response to the user once the blog is created.
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
