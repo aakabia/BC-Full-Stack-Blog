@@ -4,22 +4,24 @@
     <div class="row d-flex justify-content-center">
         <div class="postCards col-11 col-sm-8 d-flex justify-content-center card">
             <div class="card-body">
-                <h5 class="card-title">{{newCommentData.blog.topic}}</h5>
+                <h5 class="card-title">{{newBlogData.topic}}</h5>
 
                 <p class="card-text">
-                   {{newCommentData.blog.description}}
+                   {{newBlogData.description}}
                 </p>
 
-                <h6>Created by: {{newCommentData.user.user_name}}</h6>
+                <h6>Created by: {{newBlogData.user.user_name}}</h6>
             </div>
         </div>
 
-        <form action="" method="POST" class="col-11 col-sm-8 commentForm d-flex flex-column justify-content-center">
+        <form id="alert" class="col-11 col-sm-8 commentForm d-flex flex-column justify-content-center">
             <label class="commentLabel col-12" for="comment">Comment:</label>
             <textarea class="col-12 commmentText" name="comment" id="comment"></textarea>
-            <button type="submit" class="commentButton col-7 btn btn-secondary">
+            <button type="button" class="commentButton col-7 btn btn-secondary"  id="createCommentBtn"    >
                 Comment
             </button>
         </form>
     </div>
 </section>
+
+<script src="/js/comment.js"></script>
