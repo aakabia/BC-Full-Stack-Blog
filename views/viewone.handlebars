@@ -1,45 +1,49 @@
-
 <section class="posts container-fluid">
-    <div class="row d-flex justify-content-center">
-        <div class="postCards col-11 col-sm-11 d-flex justify-content-center card">
-            <div class="card-body">
-                <h5 class="card-title">{{newblogData.topic}}</h5>
+  <div class="row d-flex justify-content-center">
+    <div class="postCards col-11 col-sm-11 d-flex justify-content-center card">
+      <div class="card-body">
+        <h5 class="card-title">{{newblogData.topic}}</h5>
 
-                <p class="card-text">
-                   {{newblogData.description}}
-                </p>
+        <p class="card-text">
+          {{newblogData.description}}
+        </p>
 
-                <h6> Created by: {{newblogData.user.user_name}}  </h6>
-                <a href="/api/comments/{{newblogData.id}}" class="cardLink card-link">Comment</a>
-                
-            </div>
-        </div>
+        <h6> Created by: {{newblogData.user.user_name}} </h6>
+        <a
+          href="/api/comments/{{newblogData.id}}"
+          class="cardLink card-link"
+        >Comment</a>
 
-
-
-        {{#each newblogData.comments as | comment|}}
-        <div class="postCards col-11 col-sm-5 d-flex justify-content-center card">
-            <div class="card-body">
-                <h5 class="card-title"> Comment by: {{comment.user.user_name}} </h5>
-
-                <p class="card-text">
-                   {{comment.comment}}
-                </p>
-
-                <a href="/" class="cardLink card-link">Delete</a>
-
-                
-            </div>
-        </div>
-        {{/each}}
-
-
-
-       
-
-
-
-       
+      </div>
     </div>
+
+    {{#each newblogData.comments as |comment|}}
+        <!-- Above, is the for each version of handle bars -->
+      <div
+        class="postCards col-11 col-sm-5 d-flex justify-content-center card"
+        id="{{comment.user.id}}"
+        data-id="{{comment.id}}"
+      >
+        <div class="card-body">
+          <h5 class="card-title"> Comment by: {{comment.user.user_name}} </h5>
+
+          <p class="card-text">
+            {{comment.comment}}
+          </p>
+
+          {{#if (equal comment.user.id ../userId)}}
+            <a id="deleteBTN" class="cardLink card-link commentDelete">Delete</a>
+          {{else}}
+
+          {{/if}}
+            <!-- above is the equal function within a conditional statment to check if the cumment user id matches the current user id-->
+          
+
+        </div>
+      </div>
+    {{/each}}
+
+  </div>
 </section>
 
+<script src="/js/deleteComment.js"></script>

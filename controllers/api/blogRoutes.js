@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const { User, Blog, Comment } = require("../../models");
 const withAuth = require("../../utils/auth");
+const equal = require("../../utils/equal");
+
 
 router.get("/:id", withAuth, async (req, res) => {
   // Above is a get route used to render the log in page.
@@ -23,13 +25,15 @@ router.get("/:id", withAuth, async (req, res) => {
     // Above we check that the data exists.
     const newblogData = blogData.get({ plain: true });
     // Above, we set the user data plain to true
-
+    const userId = req.session.userId
     const loggedIn = req.session.loggedIn;
     // Above we passed in the value to our logged in varaible in sessions.
 
     res.status(200).render("viewone", {
       newblogData,
       loggedIn,
+      userId,
+      
     });
   } catch (err) {
     res.status(500).json(err);
@@ -140,5 +144,55 @@ router.put("/update", withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+
+router.delete("/delete", withAuth, async (req, res) => {
+  try {
+  
+    if (!req.body.blogIDInt) {
+      res.status(400).json({ message: "No data found" });
+      return;
+    }
+  
+    const blogId = req.body.blogIDInt
+    const user_id = req.session.userId;
+    
+
+   // Above, we get our values from the body
+   // We parse int the blog id as well.
+  
+
+
+
+    
+      const deleteBlog = await Blog.destroy({
+        where: {
+          id: blogId,
+          user_id: user_id,
+        },
+      });
+
+
+    if (deleteBlog === 0) {
+      // No rows were deleted (likely due to permission issue)
+      return res.status(403).json({ message: "Unauthorized to delete this blog." });
+    }
+
+
+
+
+      // Above, we delete  blog with all above entries.
+    res.status(200).json({ message: "Deleted successfully!"})
+
+    
+
+    // Above, we redirect back to user dash!
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+
 
 module.exports = router;

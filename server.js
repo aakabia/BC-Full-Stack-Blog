@@ -4,7 +4,19 @@ const exphbs = require("express-handlebars");
 const routes = require("./controllers");
 const sequelize = require("./config/connection");
 const session = require('express-session');
-const helpers = require('./utils/auth');
+const authHelpers = require('./utils/auth');
+const equalHelper = require('./utils/equal');
+const helpers = {
+  ...authHelpers,
+  equal: equalHelper // Add the equal helper
+};
+
+
+
+
+
+
+
 const hbs = exphbs.create({helpers});
 // Above are the packages I am importing to run my application.
 
