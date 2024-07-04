@@ -18,7 +18,13 @@ const sess = {
   secret: process.env.SECRET,
   resave: false,
   saveUninitialized: false,
+  cookie: {
+    // Session will expire after 30 minutes of inactivity
+    maxAge: 30 * 60 * 1000 // 30 minutes in milliseconds
+  },
+  rolling: true // Reset the cookie Max-Age on every response
 };
+
 
 app.use(session(sess));
 

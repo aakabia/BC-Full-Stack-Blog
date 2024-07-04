@@ -32,11 +32,18 @@ router.get("/dash", withAuth, async (req, res) => {
   }
 });
 
-router.get("/update", async (req, res) => {
-  // Above is a get route used to render the log in page.
+router.post("/logout", async (req, res) => {
   try {
-    res.render("update", {});
+    if (req.session.loggedIn) {
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
+      // Above we destroy the session if the user is logged in and cal end on the status.
+    } else {
+      res.status(404).end();
+    }
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
@@ -48,8 +55,6 @@ router.post("/create", async (req, res) => {
         email: req.body.email,
       },
     });
-
-    
 
     const dbUserDataUserName = await User.findOne({
       where: {
@@ -75,8 +80,6 @@ router.post("/create", async (req, res) => {
 
     const userData = req.body;
     // Above, we attach the body of the request to a variable
-
-    
 
     const newUser = await User.create(userData);
     // Above, we create a user
