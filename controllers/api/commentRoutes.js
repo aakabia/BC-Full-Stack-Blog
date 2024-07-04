@@ -65,4 +65,63 @@ router.post("/create", withAuth, async (req, res) => {
   }
 });
 
+
+
+router.delete("/delete", withAuth, async (req, res) => {
+  try {
+    if (!req.body) {
+      res.status(400).json({ message: "No data found" });
+      return;
+    }
+
+    const commentID = req.body.commentIdInt;
+    const commentUserID = req.body.commentUserIDInt;
+    const blog_id = req.body.blogIDInt;
+    const user_id = req.session.userId;
+    
+
+   // Above, we get our values from the body
+  
+
+
+
+    if (commentUserID === user_id) {
+      const deleteComment = await Comment.destroy({
+        where: {
+          id: commentID,
+          blog_id: blog_id,
+          user_id: user_id,
+        },
+      });
+
+      // Above, we delete  comment with all above entries.
+      // for this to happen the comment user id must match the user id. 
+
+      res.status(200).json("Delete request successfull!");
+    } else {
+      res.status(404).json({ message: "Cannot delete other user Comments !" });
+      return;
+    }
+
+    // Above, we create a new applicant with all the entries.
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 module.exports = router;

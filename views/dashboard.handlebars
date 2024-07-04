@@ -15,7 +15,7 @@
 
 
         {{#each newuserData.blogs as | blog |}}
-        <div class="postCards col-11 col-sm-5 d-flex justify-content-center card">
+        <div class="postCards col-11 col-sm-5 d-flex justify-content-center card" id="{{blog.id}}"   >
             <div class="card-body">
                 <h5 class="card-title">{{blog.topic}}</h5>
 
@@ -26,13 +26,15 @@
                 <h6> Created by: {{blog.user.user_name}}  </h6>
                 <a href="/api/blogs/{{blog.id}}" class="cardLink card-link">View </a>
                 <a href="/api/blogs/update/{{blog.id}}" class="cardLink card-link">Update  </a>
-                <a href="/" class="cardLink card-link">Delete </a>
+                <a id="blogDelete" class="cardLink card-link blogDelete">Delete </a>
                 
             </div>
         </div>
         {{/each}}
 
-
+        <!-- Above, is how to loop in handlebars -->
        
     </div>
 </section>
+
+<script src="/js/blogDelete.js"></script>
